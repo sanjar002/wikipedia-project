@@ -1,0 +1,12 @@
+.box {
+  width: 25px;
+  height: 25px;
+  background-color: green;
+  border-radius: 3px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
