@@ -1,11 +1,13 @@
 import { Layout, Menu } from "antd";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../../context/AppContext";
 
 const { Sider } = Layout;
 
 const SideBar = ({ collapsed }) => {
+  const { setTabCount } = useAppContext();
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Sider
       style={{
@@ -17,12 +19,9 @@ const SideBar = ({ collapsed }) => {
     >
       <div className="demo-logo-vertical" />
       <Menu
-        // onClick={(item) => {
-        //     console.log( item);
-        // }}
         onSelect={({ item, key }) => {
-          console.log(item.props.path + key);
-          navigate(item.props.path + key)
+          setTabCount(item.props.tabCount);
+          navigate(item.props.path + key);
         }}
         style={{
           backgroundColor: "red",
@@ -39,6 +38,7 @@ const SideBar = ({ collapsed }) => {
                 key: 111,
                 label: `option 1.1`,
                 path: "lesson/",
+                tabCount: 10,
               },
             ],
           },
@@ -50,7 +50,8 @@ const SideBar = ({ collapsed }) => {
               {
                 key: 112,
                 label: `option 2.1`,
-                path: "lesson/"
+                path: "lesson/",
+                tabCount: 5,
               },
             ],
           },
@@ -62,7 +63,8 @@ const SideBar = ({ collapsed }) => {
               {
                 key: 113,
                 label: `option 3.1`,
-                path: "lesson/"
+                path: "lesson/",
+                tabCount: 7,
               },
             ],
           },
