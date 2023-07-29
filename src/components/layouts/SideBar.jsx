@@ -61,11 +61,11 @@ const SideBar = ({ collapsed }) => {
           {
             key: "2",
             icon: null,
-            label: "nav 2",
+            label: "navBar 2",
             children: [
               {
                 key: 200,
-                label: `option 2.1`,
+                label: `options 2.1`,
                 path: "lesson/",
                 tabcount: 5,
               },
