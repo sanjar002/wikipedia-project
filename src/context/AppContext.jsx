@@ -6,10 +6,13 @@ const { Provider } = TabContext;
 
 const AppContext = ({ children }) => {
   const [tabCount, setTabCount] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
   const value = {
     tabCount,
     setTabCount,
+    setActiveTab,
+    activeTab
   };
 
   return <Provider value={value}>{children}</Provider>;

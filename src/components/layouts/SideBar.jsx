@@ -5,7 +5,7 @@ import { useAppContext } from "../../context/AppContext";
 const { Sider } = Layout;
 
 const SideBar = ({ collapsed }) => {
-  const { setTabCount } = useAppContext();
+  const { setTabCount, setActiveTab } = useAppContext();
 
   const navigate = useNavigate();
   return (
@@ -19,8 +19,12 @@ const SideBar = ({ collapsed }) => {
     >
       <div className="demo-logo-vertical" />
       <Menu
+        onOpenChange={(item) => {
+          setActiveTab(item);
+        }}
         onSelect={({ item, key }) => {
-          setTabCount(item.props.tabCount);
+          console.log(item);
+          setTabCount(item.props.tabcount);
           navigate(item.props.path + key);
         }}
         style={{
@@ -32,13 +36,25 @@ const SideBar = ({ collapsed }) => {
           {
             key: "1",
             icon: null,
-            label: "nav 1",
+            label: "1 Введение",
             children: [
               {
-                key: 111,
-                label: `option 1.1`,
+                key: 100,
+                label: `1.1 Об этом курсе`,
                 path: "lesson/",
-                tabCount: 10,
+                tabcount: 5,
+              },
+              {
+                key: 101,
+                label: `1.2 Что такое Википедия, Викимедиа и вики-проекты 1.2`,
+                path: "lesson/",
+                tabcount: 3,
+              },
+              {
+                key: 102,
+                label: `1.3 Общие принципы Википедии 1.3`,
+                path: "lesson/",
+                tabcount: 7,
               },
             ],
           },
@@ -48,10 +64,10 @@ const SideBar = ({ collapsed }) => {
             label: "nav 2",
             children: [
               {
-                key: 112,
+                key: 200,
                 label: `option 2.1`,
                 path: "lesson/",
-                tabCount: 5,
+                tabcount: 5,
               },
             ],
           },
@@ -61,10 +77,10 @@ const SideBar = ({ collapsed }) => {
             label: "nav 3",
             children: [
               {
-                key: 113,
+                key: 300,
                 label: `option 3.1`,
                 path: "lesson/",
-                tabCount: 7,
+                tabcount: 7,
               },
             ],
           },

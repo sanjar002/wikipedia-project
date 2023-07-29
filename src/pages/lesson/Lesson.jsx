@@ -3,12 +3,12 @@ import { useAppContext } from "../../context/AppContext";
 import { useEffect, useState } from "react";
 
 // tabs comp
-import Tab1 from '../../components/Home2/Home2'
-import Tab2  from '../../components/Home3/Home3'
-import Tab3  from '../../components/HomePage/HomePage'
+import Tab1 from "../../components/Home2/Home2";
+import Tab2 from "../../components/Home3/Home3";
+import Tab3 from "../../components/HomePage/HomePage";
 
 const Lesson = () => {
-  const { tabCount } = useAppContext();
+  const { tabCount, activeTab } = useAppContext();
   const [tabs, setTabs] = useState([]);
 
   let items = [];
@@ -17,17 +17,20 @@ const Lesson = () => {
     console.log(key);
   };
 
+  function getComponent(step) {
+    console.log(step[0]);
+  }
+
   useEffect(() => {
-    for (let i = 1; i < tabCount; i++) {
+    for (let i = 1; i <= tabCount; i++) {
       items.push({
         key: "tab-" + i,
         label: <div className="box"></div>,
-        children:`Lorem ${i}`,
+        children: getComponent(activeTab),
       });
     }
 
-    setTabs([...items])
-
+    setTabs([...items]);
   }, [tabCount]);
   return (
     <div>
